@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>login and registration</title>
+</head>
+<body>
+  <h2>Registration</h2>
+  {% if request.session.log_reg == "reg" %}
+    {% if messages %}
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+  <h2>Welcome!</h2>
+  <form action="/regi" method="post">
+    {% csrf_token %}
+    Name: <input type="text" name="name"><br>
+    Username: <input type="text" name="username"><br>
+    Password: <input type="text" name="password"><br>
+    Confirm pw: <input type="text" name="confirm"><br>
+    Date Hired: <input type="date" name="date_hired">
+    <input type="submit" value="Register">
+  </form>
+    
+  <h2>Login</h2>
+  {% if request.session.log_reg == "log" %}
+    {% if messages %}
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+  <form action="/login" method="post">
+  {% csrf_token %}
+  Username: <input type="text" name="username"><br>
+  Password: <input type="text" name="password"><br>
+  <input type="submit" value="Login">
+  </form>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

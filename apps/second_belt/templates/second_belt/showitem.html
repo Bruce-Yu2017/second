@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>showitem</title>
+</head>
+<body>
+  <a href="/dashboard">Home</a>
+  <a href="/">logout</a>
+  {% if showeditems %}
+    <h2>{{showeditems.item_name}}</h2>
+  {%endif%}
+
+  <p>Users who added this product/item under their wish list:</p>
+  {% if useradds %}
+    {% for useradd in useradds %}
+      {{useradd.name}}<br>
+    {%endfor%}
+  {%endif%}
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dashboard</title>
+</head>
+<body>
+  <h2>Hello, {{myself.name}}</h2>
+  <a href="/">Logout</a>
+  <h4>Your wish list:</h4>
+  <table border="1">
+    <tr>
+      <th>Item</th>
+      <th>Added by</th>
+      <th>Date added</th>
+      <th>Action</th>
+    </tr>
+    {% if mycreateditems %}
+      {% for mycreateditem in mycreateditems %}
+        <tr>
+          <td><a href="/wish_items/{{mycreateditem.id}}">{{mycreateditem.item_name}}</a></td>
+          <td>{{myself.name}}</td>
+          <td>{{mycreateditem.created_at}}</td>
+          <td><a href="/delete/{{mycreateditem.id}}">Delete</a></td>
+        </tr>
+      {%endfor%}
+    {%endif%}
+
+    {% if myadditems %}
+      {% for myadditem in myadditems %}
+        <tr>
+          <td><a href="/wish_items/{{myadditem.id}}">{{myadditem.item_name}}</a></td>
+          <td>{{myadditem.creater}}</td>
+          <td>{{myadditem.created_at}}</td>
+          <td><a href="/remove/{{myadditem.id}}">remove</a></td>
+        </tr>
+      {%endfor%}
+    {%endif%}
+  </table>
+
+  <h4>Other users' wish list:</h4>
+  <table border="1">
+    <tr>
+      <td>Item</td>
+      <td>Added by</td>
+      <td>Date added</td>
+      <td>Action</td>
+    </tr>
+    {% if otheritems %}
+      {% for otheritem in otheritems %}
+        <tr>
+          <td><a href="/wish_items/{{otheritem.id}}">{{otheritem.item_name}}</a></td>
+          <td>{{otheritem.creater}}</td>
+          <td>{{otheritem.created_at}}</td>
+          <td><a href="/addlist/{{otheritem.id}}">Add to my wishlist</a></td>
+        </tr>
+      {%endfor%}
+    {%endif%}
+  </table>
+  <a href="/wish_items/create">Add item</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
